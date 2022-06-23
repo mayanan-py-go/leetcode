@@ -1,42 +1,36 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
+
+/*
+给定一个字符串 s ，请你找出其中不含有重复字符的 最长子串 的长度。
+https://leetcode.cn/problems/longest-substring-without-repeating-characters/submissions/
+*/
 
 func main() {
-	ret := lengthOfLongestSubstring("abacbded")
-	fmt.Println(ret)
+	fmt.Println(lengthOfLongestSubstring("pwwkew"))
 }
 
 func lengthOfLongestSubstring(s string) int {
-	n, l, p := 0, 0, -1
-	substr := make([]rune, 0, len(s))
-	for _, v := range s{
+	var l, r int = 0, 0
+	charMap := map[uint8]int{}
+	var max int
+	var length int = len(s)
 
-		p = func(runes []rune, r rune) int {
-			for i, vv := range runes{
-				if vv == r{
-					return i
-				}
-			}
-			return -1
-		}(substr, v)
-
-		if p > -1{
-			l = len(substr)
-			if l > n{
-				n = l
-			}
-			substr = append(substr[p+1:], v)
-		}else{
-			substr = append(substr, v)
+	for r = 0; r < length; r++ {
+		charMap[s[r]] += 1
+		for charMap[s[r]] > 1 {
+			charMap[s[l]] -= 1
+			l++
 		}
+		max = Max(max, r-l+1)
 	}
-	l = len(substr)
-	if l > n{
-		n = l
-	}
-	return n
+	return max
 }
 
+func Max(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
+}
