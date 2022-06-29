@@ -13,7 +13,7 @@ func main() {
 	n1 := &TreeNode{Val: 1}
 	A.Left = n1
 
-	B := &TreeNode{Val: 4, Left: &TreeNode{Val: 1}}
+	B := &TreeNode{Val: 4, Left: &TreeNode{Val: 2}}
 
 	fmt.Println(isSameTree(A, B))
 }
@@ -28,7 +28,7 @@ func isSameTree(p *TreeNode, q *TreeNode) bool {
 	if p == nil && q == nil {
 		return true
 	}
-	if (p == nil && q != nil) || (q == nil && p != nil) {
+	if p == nil || q == nil {
 		return false
 	}
 	if p.Val != q.Val {
