@@ -13,7 +13,7 @@ https://leetcode.cn/problems/ji-qi-ren-de-yun-dong-fan-wei-lcof/
 
 
 func main() {
-	fmt.Println(movingCount(3, 2, 17))
+	fmt.Println(movingCount(3, 2, 1))
 }
 
 func movingCount(m int, n int, k int) int {
