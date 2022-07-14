@@ -66,8 +66,8 @@ func Constructor() MedianFinder {
 }
 func (m *MedianFinder) AddNum(num int) {
 	// 添加数字
-	if m.minHp.IntSlice.Len() == m.maxHp.IntSlice.Len() {
-		if m.minHp.IntSlice.Len() == 0 || num >= m.maxHp.IntSlice[0] {
+	if m.minHp.Len() == m.maxHp.Len() {
+		if m.minHp.Len() == 0 || num >= m.maxHp.IntSlice[0] {
 			heap.Push(m.minHp, num)
 		}else {
 			heap.Push(m.maxHp, num)
