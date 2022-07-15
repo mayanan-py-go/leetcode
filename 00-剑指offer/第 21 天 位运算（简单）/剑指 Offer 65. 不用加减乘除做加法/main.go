@@ -9,10 +9,10 @@ func main() {
 
 }
 func add(a, b int) int {
-	for b != 0 {  // 当进位为0时跳出
-		c := (a&b)<<1  // c = 进位
-		a ^= b  // a = 非进位和
-		b = c  // b = 进位
+	for b != 0 {
+		tmp := (a&b)<<1  // 进位
+		a ^= b  // 本位
+		b = tmp  // 进位
 	}
 	return a
 }
